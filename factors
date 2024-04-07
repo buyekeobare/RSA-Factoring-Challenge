@@ -2,15 +2,15 @@
 from sys import argv
 
 
-def factorize(number_to_check):
+def factorize(num):
     j = 2
 
-    if number_to_check < 2:
+    if num < 2:
         return
    
-    while number_to_check % j:
+    while num % j:
         j += 1
-    print("{:.0f}={:.0f}*{:.0f}".format(number_to_check, number_to_check / j, j))
+    print("{:.0f}={:.0f}*{:.0f}".format(num, num / j, j))
 
 if len(argv) != 2:
     exit()
@@ -20,8 +20,8 @@ try:
         line = file.readline()
 
         while line != "":
-            number_to_check = int(line.split('\n')[0])
-            factorize(number_to_check)
+            num = int(line.split('\n')[0])
+            factorize(num)
             line = file.readline()
 except:
     pass
