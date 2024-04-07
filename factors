@@ -1,16 +1,39 @@
 #!/usr/bin/python3
+import sys
 from sys import argv
 
+"""
+File_name: factors
+Created: 7th of April, 2024
+Auth: Buyeke Obare
+Size: undefined
+Project: RSA-Factoring-Challenge
+Status: submitted.
+"""
 
-def factorize(num):
+
+def factorize(value):
+
+    """
+    Factorize as many numbers as possible into..
+    ..a product of two smaller numbers.
+    VARIABLE(" "):
+    factorize(int) Factorize all the things!
+    Usage: factors <file>
+    Output format: n=p*q
+    """
     j = 2
 
-    if num < 2:
+    if value < 2:
         return
-   
-    while num % j:
+    print()
+    print(value, "<- ")
+    while value % j:
         j += 1
-    print("{:.0f}={:.0f}*{:.0f}".format(num, num / j, j))
+    print("{:.0f}={:.0f}*{:.0f}".format(value, value / j, j))
+    print()
+    print(value, "<- ")
+
 
 if len(argv) != 2:
     exit()
@@ -20,8 +43,13 @@ try:
         line = file.readline()
 
         while line != "":
-            num = int(line.split('\n')[0])
-            factorize(num)
+            value = int(line.split('\n')[0])
+            factorize(value)
             line = file.readline()
-except:
+except FileNotFoundError:
+    print(f'File not found: {argv}')
+except ValueError:
+    print(f'Invalid input in the file: {argv}')
+except Exception as e:
+    print(f'An error occurred: {str(e)}')
     pass
